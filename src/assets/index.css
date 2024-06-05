@@ -3,10 +3,6 @@
 @tailwind utilities;
 
 @font-face {
-  src: url(./fonts/PPMonumentExtended-Regular.otf) format("truetype");
-  font-family: 'Playground';
-}
-@font-face {
   font-family: 'bitmap';
   src: url('./fonts/PPMondwest-Regular.otf') format('opentype');
 }
