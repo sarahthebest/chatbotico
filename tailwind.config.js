@@ -17,7 +17,7 @@ export default {
   },
   daisyui: {
     themes: [
-      "synthwave",
+      "dracula",
       "retro",
     ],
   },

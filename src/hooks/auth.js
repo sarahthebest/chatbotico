@@ -1,6 +1,4 @@
-// File: /src/hooks/auth.js
-
-export default async function registerUser({ email, username, password, avatar, csrfToken }) {
+export async function registerUser({ email, username, password, avatar, csrfToken }) {
   const res = await fetch('https://chatify-api.up.railway.app/auth/register', {
     method: "POST",
     headers: {
@@ -27,4 +25,32 @@ export default async function registerUser({ email, username, password, avatar, 
   }
 
   return JSON.parse(responseText); 
+}
+
+export async function handleLogin({ username, password, csrfToken }) {
+  try {
+    const res = await fetch("https://chatify-api.up.railway.app/auth/token", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username,
+        password,
+        csrfToken
+      }),
+    });
+
+    if (!res.ok) {
+      const error = await res.json();
+      throw new Error(error.message || "Failed to sign in");
+    }
+
+    const data = await res.json();
+    console.log(data);
+    return data.token;
+  } catch (error) {
+    console.error("Login Error:", error);
+    throw new Error("Failed to sign in");
+  }
 }

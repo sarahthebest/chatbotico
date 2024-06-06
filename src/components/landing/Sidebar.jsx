@@ -1,10 +1,12 @@
+import Logo from "../common/Logo";
+
 const Sidebar = () => {
   return (
-    <div className="sidebar p-4 relative h-full mb-0 w-1/4 bg-neutral flex flex-col overflow-hidden justify-between">
-      <div className="preview">
-        <h2 className="font-bitmap text-5xl bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-          Beep boop Beep boop Beep boop Beep boop Beep boop Beep boop</h2>
-        <div className="accordion text-white join join-vertical gap-4 w-full rounded-md mt-4">
+    <div className="sidebar p-4 relative w-full h-fit sm:h-screen mb-0 sm:w-1/4 bg-neutral flex flex-col sm:flex-col overflow-hidden gap-2 justify-between">
+      <div className="preview mt-28">
+        {/* <h2 className="font-bitmap text-5xl bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+          Beep boop Beep boop Beep boop Beep boop Beep boop Beep boop</h2> */}
+        <div className="accordion text-white join join-vertical gap-4 w-full rounded-md">
           <div className="collapse collapse-plus border">
             <input type="radio" name="my-accordion-3" />
             <div className="collapse-title text-xl font-medium">
@@ -40,8 +42,7 @@ const Sidebar = () => {
           </div>
         </div>
       </div>
-      <h1 className="font-bitmap text-accent huge bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-        Botico.</h1>
+      <Logo />
     </div>
   );
 };

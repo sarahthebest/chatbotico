@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { BsPerson, BsKey, BsCardImage, BsEnvelope } from "react-icons/bs";
-import registerUser from "../../hooks/auth";
+import {registerUser} from "../../hooks/auth";
 import { useNavigate } from "react-router-dom";
 
 const RegisterForm = () => {

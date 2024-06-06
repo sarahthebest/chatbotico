@@ -1,6 +1,6 @@
 const ThemeControl = () => {
   return (
-    <div className="themeControl absolute top-2 sm:top-10 start-10 h-fit">
+    <div className="themeControl invisible sm:visible justify-self-end sm:top-20 start-10 h-fit">
       <label className="swap swap-rotate">
         <input type="checkbox" className="theme-controller" value="retro" />
 
@@ -13,7 +13,7 @@ const ThemeControl = () => {
         </svg>
 
         <svg
-          className="swap-on fill-current w-10 h-10"
+          className="swap-on fill-white w-10 h-10"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
         >

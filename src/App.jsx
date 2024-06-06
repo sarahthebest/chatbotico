@@ -1,6 +1,8 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Register from "./components/register/Register";
 import Home from "./components/Home";
+import LandingHeader from "./components/landing/landingHeader";
+import Dashboard from "./components/dashboard/Dashboard";
 
 const routes = [
   {
@@ -10,6 +12,10 @@ const routes = [
   {
     path: "/register",
     element: <Register />,
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
   },
 ];
 
