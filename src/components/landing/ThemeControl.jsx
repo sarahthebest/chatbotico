@@ -1,8 +1,8 @@
 const ThemeControl = () => {
   return (
-    <div className="themeControl absolute top-10 start-10 h-fit">
+    <div className="themeControl absolute top-2 sm:top-10 start-10 h-fit">
       <label className="swap swap-rotate">
-        <input type="checkbox" className="theme-controller" value="garden" />
+        <input type="checkbox" className="theme-controller" value="retro" />
 
         <svg
           className="swap-off fill-current w-10 h-10"

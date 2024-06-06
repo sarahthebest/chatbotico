@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './assets/index.css'
-import ThemeControl from './components/common/ThemeControl.jsx'
+import ThemeControl from './components/landing/ThemeControl.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

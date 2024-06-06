@@ -1,7 +1,5 @@
-import { createBrowserRouter, RouterProvider, Routes, Route } from "react-router-dom";
-import Register from "./components/account/Register";
-import * as ReactDOM from "react-dom";
-import ThemeControl from "./components/common/ThemeControl";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Register from "./components/register/Register";
 import Home from "./components/Home";
 
 const routes = [
@@ -19,12 +17,9 @@ function App() {
   const router = createBrowserRouter(routes);
 
   return (
-    <RouterProvider router={router}>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/register" element={<Register />} />
-      </Routes>
-    </RouterProvider>
+    <div className="main-content flex-grow">
+      <RouterProvider router={router} />
+    </div>
   );
 }
 

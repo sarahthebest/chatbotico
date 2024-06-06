@@ -8,15 +8,17 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        playground: ['Playground', "sans-serif"],
         bitmap: ['Bitmap', "mono-space"],
+        oxygen: ['Oxygen', "mono-space"],
+        hatton: ['Hatton', "mono-space"]
+
       },
     },
   },
   daisyui: {
     themes: [
-      "night",
-      "garden",
+      "synthwave",
+      "retro",
     ],
   },
   plugins: [

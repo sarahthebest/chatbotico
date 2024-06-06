@@ -1,10 +1,12 @@
-import SignIn from "./account/SignIn"
+import Sidebar from './landing/Sidebar';
+import SignIn from './signin/SignIn'
 
 const Home = () => {
     return ( 
-        <>
-        <SignIn />
-        </>
+        <div className="content flex flex-row overflow-hidden h-full">
+            <SignIn />
+            <Sidebar />
+        </div>
      );
 }
  

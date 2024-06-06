@@ -6,8 +6,42 @@
   font-family: 'bitmap';
   src: url('./fonts/PPMondwest-Regular.otf') format('opentype');
 }
+@font-face {
+  font-family: 'oxygen';
+  src: url('./fonts/Oxygen-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'hatton';
+  src: url('./fonts/PPHatton-MediumItalic.otf') format('opentype');
+}
 
-*{
+html, body {
   margin: 0;
   padding: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+/* .sidebar{
+  background: #1c0036;
+  background: -webkit-linear-gradient(to right, #0b8793, #0f0036);
+  background: linear-gradient(to right, #0b8793, #0f0036); 
+  
+} */
+
+.main-content {
+  flex: 1; 
+}
+
+/* TEXT STYLES */
+.huge{
+  font-size: 6rem;
+  line-height: 1.2;
 }
