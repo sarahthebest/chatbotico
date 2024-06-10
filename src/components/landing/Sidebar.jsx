@@ -2,14 +2,13 @@ import Logo from "../common/Logo";
 
 const Sidebar = () => {
   return (
-    <div className="sidebar p-4 relative w-full h-fit sm:h-screen mb-0 sm:w-1/4 bg-neutral flex flex-col sm:flex-col overflow-hidden gap-2 justify-between">
-      <div className="preview mt-28">
-        {/* <h2 className="font-bitmap text-5xl bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-          Beep boop Beep boop Beep boop Beep boop Beep boop Beep boop</h2> */}
+    <div className="sidebar p-10 md:p-4 relative w-full h-fit md:h-screen
+     mb-0 md:w-1/4 bg-neutral flex flex-col md:flex-col overflow-hidden gap-2 justify-between">
+      <div className="preview my-6 md:mt-28">
         <div className="accordion text-white join join-vertical gap-4 w-full rounded-md">
-          <div className="collapse collapse-plus border">
+          <div className="collapse collapse-plus bg-primary">
             <input type="radio" name="my-accordion-3" />
-            <div className="collapse-title text-xl font-medium">
+            <div className="collapse-title text-xl">
               Private messaging 🕵️‍♀️
             </div>
             <div className="collapse-content">
@@ -18,7 +17,7 @@ const Sidebar = () => {
               </p>
             </div>
           </div>
-          <div className="collapse collapse-plus border">
+          <div className="collapse collapse-plus bg-secondary">
             <input type="radio" name="my-accordion-3" />
             <div className="collapse-title text-xl font-medium">
               Secure platform 👩‍💻
@@ -29,7 +28,7 @@ const Sidebar = () => {
               </p>
             </div>
           </div>
-          <div className="collapse collapse-plus border">
+          <div className="collapse collapse-plus bg-accent">
             <input type="radio" name="my-accordion-3" />
             <div className="collapse-title text-xl font-medium">
               User-friendly interface 💃

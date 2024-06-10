@@ -8,9 +8,9 @@ const Register = () => {
   return (
     <>
     <LandingHeader />
-    <div className="content flex flex-col sm:flex-row overflow-hidden">
-    <div className="w-full sm:w-4/6 md:w-3/6 lg:w-2/6 mx-auto pt-28">
-        <div className="register mx-auto p-4 border shadow-lg rounded-md">
+    <div className="content flex flex-col md:flex-row overflow-hidden">
+    2<div className="w-full pt-28 md:w-4/6 lg:w-2/6 mx-auto">
+      <div className="register mx-auto p-10 md:p-4 md:border-white/30 md:border border-0 shadow-lg rounded-md">
           <Welcome />
           <Tabs />
           <RegisterForm />

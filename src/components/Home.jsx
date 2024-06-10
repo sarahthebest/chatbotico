@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <>
       <LandingHeader />
-      <div className="content flex flex-col sm:flex-row overflow-hidden">
+      <div className="content relative flex flex-col md:flex-row overflow-hidden">
         <SignIn />
         <Sidebar />
       </div>

@@ -45,9 +45,16 @@ export async function handleLogin({ username, password, csrfToken }) {
       const error = await res.json();
       throw new Error(error.message || "Failed to sign in");
     }
-
+    
     const data = await res.json();
     console.log(data);
+    localStorage.setItem('auth-token', data.token);
+    localStorage.setItem('user', JSON.stringify({
+      id:data.user.id,
+      username:data.user.username,
+      avatar:data.user.avatar,
+    }));
+    console.log(user);
     return data.token;
   } catch (error) {
     console.error("Login Error:", error);

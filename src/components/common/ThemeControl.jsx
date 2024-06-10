@@ -1,8 +1,28 @@
+import { useState, useEffect } from "react";
+
 const ThemeControl = () => {
+  const [theme, setTheme] = useState('dracula');
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      setTheme(savedTheme);
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    }
+  }, []);
+
+  const handleThemeToggle = (e) => {
+    const newTheme = e.target.checked ? 'retro' : 'dracula';
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+    document.documentElement.setAttribute('data-theme', newTheme);
+  }
+
   return (
     <div className="themeControl invisible sm:visible justify-self-end sm:top-20 start-10 h-fit">
       <label className="swap swap-rotate">
-        <input type="checkbox" className="theme-controller" value="retro" />
+        <input type="checkbox" className="theme-controller" checked={theme === 'retro'}
+          onChange={handleThemeToggle} />
 
         <svg
           className="swap-off fill-current w-10 h-10"

@@ -1,14 +1,16 @@
 import { useState, useEffect } from "react";
 import { BsPerson, BsKey } from "react-icons/bs";
 import { handleLogin } from "../../hooks/auth";
+import { useNavigate } from "react-router-dom";
 
-const SignIn = () => {
+const SignIn = ({setAuth}) => {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
   const [csrfToken, setCsrfToken] = useState("");
+  let navigate = useNavigate();
+
 
   useEffect(() => {
     const fetchCsrfToken = async () => {
@@ -32,10 +34,15 @@ const SignIn = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
-    setSuccess("");
 
     try {
-      const token = await handleLogin({ username, password, csrfToken });
+      const data = await handleLogin({ username, password, csrfToken });
+      setAuth({token:data.token, user:data.user});
+      localStorage.setItem('auth-token', data.token);
+      localStorage.setItem('user', JSON.stringify(data.user));
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 2000); 
     } catch (err) {
       console.error(err);
       setError("Invalid credentials");
@@ -47,6 +54,7 @@ const SignIn = () => {
       <label className="input input-bordered flex items-center gap-2">
         <BsPerson />
         <input
+          name="username"
           type="text"
           className="grow"
           placeholder="Username"
@@ -57,6 +65,7 @@ const SignIn = () => {
       <label className="input input-bordered flex items-center gap-2">
         <BsKey />
         <input
+          name="password"
           type={showPassword ? "text" : "password"}
           className="grow"
           value={password}
@@ -67,6 +76,7 @@ const SignIn = () => {
         <label className="label cursor-pointer justify-normal gap-2">
           <span className="label-text">Show password</span>
           <input
+            name="checkbox"
             type="checkbox"
             checked={showPassword}
             onChange={(e) => setShowPassword(e.target.checked)}
@@ -77,9 +87,6 @@ const SignIn = () => {
       {error && (
         <div className="text-black bg-red-500 p-2 rounded-md">{error}</div>
       )}
-      {success && (
-        <div className="text-black bg-green-500 p-2 rounded-md">{success}</div>
-      )}{" "}
       <button
         type="submit"
         onClick={handleSubmit}
