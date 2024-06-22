@@ -4,15 +4,11 @@
 
 @font-face {
   font-family: 'bitmap';
-  src: url('./fonts/PPMondwest-Regular.otf') format('opentype');
+  src: url('./fonts/PixelOperator.ttf') format('truetype');
 }
 @font-face {
   font-family: 'oxygen';
   src: url('./fonts/Oxygen-Regular.ttf') format('truetype');
-}
-@font-face {
-  font-family: 'hatton';
-  src: url('./fonts/PPHatton-MediumItalic.otf') format('opentype');
 }
 
 html, body {
@@ -33,8 +29,103 @@ html, body {
   height: fit-content;
 }
 
+.input{
+  background-color: #00000020;
+}
+
+.sidebar{
+  background-color:hsla(311,0%,11%,1);
+  background-image:
+  radial-gradient(at 0% 2%, #3c32ff 0px, transparent 50%),
+  radial-gradient(at 90% 90%, #220c6b 0px, transparent 50%);
+}
+
+.avatar{
+  width: 60px;height: 60px;
+  border-radius: 14%;
+}
+
+.illustration{
+  z-index: -1;
+  width: 80%;
+}
+.blob {
+  width: 100%;
+  height: 500px;
+  aspect-ratio: 1/1;
+  animation: animate 5s cubic-bezier(0.68, 0.55, 0.27, 1.55) infinite;
+  filter: blur(40px);
+  z-index: -1;
+  box-shadow: inset 50px 50px 17px 0px #5820ff95,
+              inset 100px 100px 17px 0px #5500ff;
+}
+
+@keyframes animate {
+  0% {
+    transform: translate(0%, 120%) scale(1.5);
+  }
+  50% {
+    transform: translate(0%, 140%) scale(2);
+    box-shadow: inset 50px 50px 17px 0px #8f20ff95,
+    inset 100px 100px 17px 0px #00e5ff81;
+  }
+  100% {
+    transform: translate(0%, 120%) scale(1.5);
+  }
+}
+
+.home::after {
+  content: "";
+  background-image: url(src/assets/img/noise.webp); 
+  height: 300%;
+  width: 300%;
+  position: fixed;
+  z-index: 5;
+  opacity: 0.05;
+  animation: animateGrain 10s steps(8) infinite;
+  top: 0;
+  left: 0;
+}
+
+@keyframes animateGrain {
+  0%, 100% {
+    transform: translate(0);
+  }
+  10% {
+    transform: translate(-5%, -10%);
+  }
+  20% {
+    transform: translate(-15%, -20%);
+  }
+  30% {
+    transform: translate(-5%, -10%);
+  }
+  40% {
+    transform: translate(-15%, -20%);
+  }
+  50% {
+    transform: translate(-5%, -10%);
+  }
+  60% {
+    transform: translate(-15%, -20%);
+  }
+  70% {
+    transform: translate(-5%, -10%);
+  }
+  80% {
+    transform: translate(-15%, -20%);
+  }
+  90% {
+    transform: translate(-5%, -10%);
+  }
+  100% {
+    transform: translate(-15%, -20%);
+  }
+}
+
+
 /* TEXT STYLES */
 .huge{
-  font-size: 6rem;
+  font-size: 6.8rem;
   line-height: 1.2;
 }

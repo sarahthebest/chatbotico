@@ -1,17 +1,38 @@
-import Sidebar from "./landing/Sidebar";
-import LandingHeader from "./landing/landingHeader";
-import SignIn from "./signin/SignIn";
+import Welcome from "./landing/Welcome";
+import { Link } from "react-router-dom";
 
-const Home = () => {
+const Home = ({ setAuth }) => {
   return (
     <>
-      <LandingHeader />
-      <div className="content relative flex flex-col md:flex-row overflow-hidden">
-        <SignIn />
-        <Sidebar />
+      <div className="home w-full h-screen flex flex-col overflow-hidden isolate relative">
+        <h1 className="huge font-bitmap relative z-10 text-accent ms-6 lg:ms-32 mt-20 text-wrap">
+          Chat Botico
+        </h1>
+        <div className="landing absolute start-6 bottom-6 lg:start-32 lg:bottom-32 flex flex-col justify-start mb-0 w-fit h-fit z-50">
+          <Welcome />
+          <div className="btnGroup join">
+            <Link to="/signin">
+              <button className="btn bg-primary hover:bg-secondary hover:text-neutral-900 w-fit join-item">
+                Sign In
+              </button>
+            </Link>
+            <Link to="/register">
+              <button className="btn bg-accent hover:bg-secondary hover:text-neutral-900 w-fit join-item">
+                Register
+              </button>
+            </Link>
+          </div>
+        </div>
+        <div className="blob bg-gradient-to-tr from-primary to-secondary via-accent absolute top-0"></div>
       </div>
     </>
   );
 };
 
 export default Home;
+
+// <LandingHeader />
+// <div className="content relative flex flex-col lg:flex-row overflow-hidden">
+//   <SignIn setAuth={setAuth} />
+//   <Sidebar />
+// </div>

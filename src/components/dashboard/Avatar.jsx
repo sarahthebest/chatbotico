@@ -1,9 +1,26 @@
+import { useEffect, useState } from "react";
+import { fetchUserDetails } from "../../hooks/users";
+
 const Avatar = () => {
+  const [avatar, setAvatar] = useState("");
+
+  useEffect(() => {
+
+    fetchUserDetails()
+      .then((data) => {
+        setAvatar(data.avatar);
+      })
+      .catch((err) => {
+        console.error("Error fetching user details:", err);
+
+      });
+  }, []);
+
     return ( 
-        <div className="avatar">
-        <div className="w-24 rounded">
-          <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-        </div>
+        <div className="avatarWrapper">
+          <img
+          className="avatar"
+           src={avatar} />
       </div>
      );
 }

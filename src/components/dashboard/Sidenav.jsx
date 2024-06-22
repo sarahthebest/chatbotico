@@ -22,16 +22,15 @@ const Sidenav = () => {
         </button>
         <Logo />
       </div>
-      <div className="divider mt-0"></div>
-      <div className="navContents flex flex-col gap-4 place-items-start justify-between h-full">
-        <div className="status flex flex-row content-center gap-4">
+      <div className="navContents w-full flex flex-col gap-4 mt-10 place-items-start h-full">
+        <div className="status flex flex-row content-center gap-4 bg-slate-600 w-full rounded p-2">
           <Avatar />
-          <p>ONLINE!!!</p>
+          <p className="my-auto">Username</p>
         </div>
-        <div className="actions">
+        <div className="actions w-full">
           <ul>
             <li>
-              <button className="btn">Logout</button>
+              <button className="btn w-full">Logout</button>
             </li>
           </ul>
         </div>
