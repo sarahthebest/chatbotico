@@ -6,7 +6,7 @@ const Tabs = () => {
   return (
     <div className="tabsContainer container mx-auto">
       <div role="tablist" className="tabs tabs-boxed">
-        <Link role="tab" className={`tab ${location.pathname === "/" ? "tab-active" : ""}`} to="/">
+        <Link role="tab" className={`tab ${location.pathname === "/signin" ? "tab-active" : ""}`} to="/signin">
           Sign In
         </Link>
         <Link role="tab" className={`tab ${location.pathname === "/register" ? "tab-active" : ""}`} to="/register">

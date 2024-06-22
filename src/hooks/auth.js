@@ -43,21 +43,21 @@ export async function handleLogin({ username, password, csrfToken }) {
 
     if (!res.ok) {
       const error = await res.json();
-      throw new Error(error.message || "Failed to sign in");
+      throw new Error(error.message || "Incorrect username or password. Try again.");
     }
     
     const data = await res.json();
-    console.log(data);
-    localStorage.setItem('auth-token', data.token);
-    localStorage.setItem('user', JSON.stringify({
-      id:data.user.id,
-      username:data.user.username,
-      avatar:data.user.avatar,
-    }));
-    console.log(user);
-    return data.token;
+    console.log("Response Data:", data);
+
+    if (data && data.token) {
+      localStorage.setItem('auth-token', data.token);
+      return { token: data.token };
+    } else {
+      throw new Error("Unexpected response structure");
+    }
   } catch (error) {
     console.error("Login Error:", error);
-    throw new Error("Failed to sign in");
+    throw new Error(error.message || "Incorrect username or password. Try again.");
   }
 }
+

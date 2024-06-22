@@ -2,15 +2,16 @@ import { useState, useEffect } from "react";
 import { BsPerson, BsKey } from "react-icons/bs";
 import { handleLogin } from "../../hooks/auth";
 import { useNavigate } from "react-router-dom";
+import { fetchUserDetails } from "../../hooks/users";
+import { fetchUsers } from "../../hooks/users";
 
-const SignIn = ({setAuth}) => {
+const SignIn = () => {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [csrfToken, setCsrfToken] = useState("");
   let navigate = useNavigate();
-
 
   useEffect(() => {
     const fetchCsrfToken = async () => {
@@ -36,16 +37,33 @@ const SignIn = ({setAuth}) => {
     setError("");
 
     try {
-      const data = await handleLogin({ username, password, csrfToken });
-      setAuth({token:data.token, user:data.user});
-      localStorage.setItem('auth-token', data.token);
-      localStorage.setItem('user', JSON.stringify(data.user));
+      const { token } = await handleLogin({ username, password, csrfToken });
+      const users = await fetchUsers(token);
+
+      const currentUser = users.find((user) => user.username === username);
+
+      if (!currentUser) {
+        throw new Error("User not found");
+      }
+
+      const userDetails = await fetchUserDetails(token, currentUser.userId);
+      
+      const user = {
+        id: userDetails[0].id,
+        username: userDetails[0].username,
+        avatar: userDetails[0].avatar,
+        };
+        
+      localStorage.setItem("auth-token", token);
+      localStorage.setItem("user", JSON.stringify(user));
+
       setTimeout(() => {
         navigate("/dashboard");
-      }, 2000); 
+      }, 2000);
+      
     } catch (err) {
       console.error(err);
-      setError("Invalid credentials");
+      setError(err.message || "Invalid credentials");
     }
   };
 
@@ -66,6 +84,7 @@ const SignIn = ({setAuth}) => {
         <BsKey />
         <input
           name="password"
+          placeholder="Password"
           type={showPassword ? "text" : "password"}
           className="grow"
           value={password}
