@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Register from "./components/register/Register";
 import SignIn from "./components/signin/SignIn"
 import Home from "./components/Home";
@@ -16,12 +16,6 @@ function App() {
       setAuth({ token, user });
     }
   }, []);
-
-  const handleLogout = () => {
-    localStorage.removeItem('auth-token');
-    localStorage.removeItem('user');
-    setAuth({ token: null, user: null });
-  }
 
   const routes = [
     {

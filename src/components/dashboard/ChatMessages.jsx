@@ -9,12 +9,11 @@ const ChatMessages = () => {
     fetchMessages()
       .then((data) => {
         setMessages(data);
-        console.log(messages);
       })
       .catch((err) => {
         console.error("Error fetching messages:", err);
       });
-  }, []);
+  }, [messages]);
 
   return (
     <div className="messages chat chat-start flex flex-col

@@ -1,7 +1,17 @@
 import Logo from "../common/Logo";
 import Avatar from "./Avatar";
+import { useNavigate } from "react-router-dom";
+
 
 const Sidenav = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem('auth-token');
+    localStorage.removeItem('user');
+    navigate("/");
+  };
+
   return (
     <div className="navbar bg-neutral h-screen w-fit flex flex-col place-items-start p-6">
       <div className="flex flex-row">
@@ -30,7 +40,7 @@ const Sidenav = () => {
         <div className="actions w-full">
           <ul>
             <li>
-              <button className="btn w-full">Logout</button>
+              <button onClick={handleLogout} className="btn w-full">Logout</button>
             </li>
           </ul>
         </div>
