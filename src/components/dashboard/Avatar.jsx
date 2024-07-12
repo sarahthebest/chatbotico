@@ -2,16 +2,17 @@ import { useEffect, useState } from "react";
 import { fetchUserDetails } from "../../hooks/users";
 
 const Avatar = () => {
-  const [avatar, setAvatar] = useState("");
+  const [avatar, setAvatar] = useState("src/assets/img/default.png");
 
   useEffect(() => {
 
     fetchUserDetails()
       .then((data) => {
+        console.log(data);  
         setAvatar(data.avatar);
       })
       .catch((err) => {
-        console.error("Error fetching user details:", err);
+        console.error("Error fetching avatar:", err);
 
       });
   }, []);
@@ -19,8 +20,9 @@ const Avatar = () => {
     return ( 
         <div className="avatarWrapper">
           <img
-          className="avatar"
-           src={avatar} />
+          className="avatar w-full"
+           src={avatar}
+           alt="Avatar image" />
       </div>
      );
 }

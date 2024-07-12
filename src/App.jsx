@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Navigate, Outlet } from "react-router-dom";
 import Register from "./components/register/Register";
 import SignIn from "./components/signin/SignIn"
 import Home from "./components/Home";
@@ -17,10 +17,14 @@ function App() {
     }
   }, []);
 
+  function ProtectedRoutes({auth}) {
+    return auth.token && auth.user ? <Outlet /> : <Navigate to="/" />
+  }
+
   const routes = [
     {
       path: "/",
-      element: <Home setAuth={setAuth} />,
+      element: <Home/>,
     },
     {
       path: "/register",
@@ -31,9 +35,14 @@ function App() {
       element: <SignIn />,
     },
     {
-      path: "/dashboard",
-      element: auth ? <Dashboard /> : <Navigate to='/' />
-    }
+      element: <ProtectedRoutes auth={auth} />,
+      children: [
+        {
+          path: "/dashboard",
+          element: <Dashboard />,
+        },
+      ],
+    },
   ];
 
   const router = createBrowserRouter(routes);

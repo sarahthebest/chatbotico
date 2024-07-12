@@ -41,7 +41,7 @@ const RegisterForm = () => {
       setSuccess("Registration successful! Redirecting to login...");
       setTimeout(() => {
         navigate("/signin");
-      }, 2000);
+      }, 1000);
     } catch (err) {
       setError(err.message || "Failed to register account.");
     }

@@ -1,10 +1,13 @@
-import Logo from "../common/Logo";
+import { useState, useEffect } from "react";
 import Avatar from "./Avatar";
+import { RxHamburgerMenu } from "react-icons/rx";
 import { useNavigate } from "react-router-dom";
-
+import { fetchUserDetails } from "../../hooks/users";
 
 const Sidenav = () => {
   const navigate = useNavigate();
+  const [visible, setVisible] = useState(false);
+  const [username, setUsername] = useState("");
 
   const handleLogout = () => {
     localStorage.removeItem('auth-token');
@@ -12,30 +15,26 @@ const Sidenav = () => {
     navigate("/");
   };
 
+  useEffect(() => {
+
+    fetchUserDetails()
+      .then((data) => {
+        setUsername(data.username);
+      })
+      .catch((err) => {
+        console.error("Error fetching username:", err);
+      });
+  }, []);
+
   return (
-    <div className="navbar bg-neutral h-screen w-fit flex flex-col place-items-start p-6">
-      <div className="flex flex-row">
-        <button className="btn btn-square btn-ghost sm:hidden visible">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            className="inline-block w-5 h-5 stroke-current"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            ></path>
-          </svg>
-        </button>
-        <Logo />
-      </div>
-      <div className="navContents w-full flex flex-col gap-4 mt-10 place-items-start h-full">
+    <div className={`nav  flex flex-col bg-neutral place-items-start w-full md:w-fit z-10 p-4  ${visible ? 'absolute' : 'relative'}`}>
+      <button onClick={() => setVisible((prev) => !prev)}>
+        <RxHamburgerMenu size="42px" className="visible md:hidden"/>
+      </button>
+      <div className={`navContents flex-col gap-4 place-items-start h-fit ${visible ? 'flex' : 'hidden md:flex'}`}>
         <div className="status flex flex-row content-center gap-4 bg-slate-600 w-full rounded p-2">
           <Avatar />
-          <p className="my-auto">Username</p>
+          <p className="my-auto">{username}</p>
         </div>
         <div className="actions w-full">
           <ul>
@@ -50,3 +49,4 @@ const Sidenav = () => {
 };
 
 export default Sidenav;
+

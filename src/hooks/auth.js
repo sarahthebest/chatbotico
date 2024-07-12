@@ -47,7 +47,6 @@ export async function handleLogin({ username, password, csrfToken }) {
     }
     
     const data = await res.json();
-    console.log("Response Data:", data);
 
     if (data && data.token) {
       localStorage.setItem('auth-token', data.token);

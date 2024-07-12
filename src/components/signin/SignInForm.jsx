@@ -10,6 +10,7 @@ const SignIn = () => {
   const [username, setUsername] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const [csrfToken, setCsrfToken] = useState("");
   let navigate = useNavigate();
 
@@ -47,20 +48,17 @@ const SignIn = () => {
       }
 
       const userDetails = await fetchUserDetails(token, currentUser.userId);
-      
+
       const user = {
-        id: userDetails[0].id,
-        username: userDetails[0].username,
-        avatar: userDetails[0].avatar,
-        };
-        
+        id: userDetails.id,
+        username: userDetails.username,
+        avatar: userDetails.avatar,
+      };
+
       localStorage.setItem("auth-token", token);
       localStorage.setItem("user", JSON.stringify(user));
-
-      setTimeout(() => {
-        navigate("/dashboard");
-      }, 2000);
-      
+      setSuccess("Signing in!");
+      navigate("/dashboard");
     } catch (err) {
       console.error(err);
       setError(err.message || "Invalid credentials");
@@ -105,6 +103,9 @@ const SignIn = () => {
       </div>
       {error && (
         <div className="text-black bg-red-500 p-2 rounded-md">{error}</div>
+      )}
+      {success && (
+        <div className="text-black bg-green-500 p-2 rounded-md">{success}</div>
       )}
       <button
         type="submit"
