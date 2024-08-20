@@ -32,6 +32,7 @@ const Home = () => {
             </Link>
           </div>
         </div>
+        return <button onClick={() => methodDoesNotExist()}>Break the world</button>;
         <div className="blob bg-gradient-to-tr from-primary to-secondary via-accent absolute top-0"></div>
       </div>
     </>
