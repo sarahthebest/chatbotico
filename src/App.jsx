@@ -1,26 +1,11 @@
-import { createBrowserRouter, RouterProvider, Navigate, Outlet } from "react-router-dom";
 import Register from "./components/register/Register";
 import SignIn from "./components/signin/SignIn"
 import Home from "./components/Home";
 import Dashboard from "./components/dashboard/Dashboard";
-import { useState, useEffect } from "react";
+import ProtectedRoutes from "./components/common/ProtectedRoutes";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 function App() {
-  const [auth, setAuth] = useState({ token: null, user: null });
-
-  useEffect(() => {
-    const token = localStorage.getItem('auth-token');
-    const user = JSON.parse(localStorage.getItem('user'));
-
-    if (token && user) {
-      setAuth({ token, user });
-    }
-  }, []);
-
-  function ProtectedRoutes({auth}) {
-    return auth.token && auth.user ? <Outlet /> : <Navigate to="/" />
-  }
-
   const routes = [
     {
       path: "/",
@@ -35,7 +20,7 @@ function App() {
       element: <SignIn />,
     },
     {
-      element: <ProtectedRoutes auth={auth} />,
+      element: <ProtectedRoutes />,
       children: [
         {
           path: "/dashboard",

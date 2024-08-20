@@ -13,7 +13,7 @@ const Message = ({ message, date }) => {
     <div className="chatBubble my-4 gap-4 w-full flex flex-row">
       <Avatar />
       <div className="messageContent">
-        <div className="chat-bubble">{message}</div>
+        <div className="chat-bubble max-w-72 text-wrap break-all flex">{message}</div>
         <p className="text-xs">{dateFormatter(date)}</p>
       </div>
     </div>

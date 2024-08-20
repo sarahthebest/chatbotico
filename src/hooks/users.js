@@ -33,16 +33,14 @@ export async function fetchUserDetails(token, userId) {
         },
       }
     );
-
     if (!res.ok) {
       const error = await res.json();
       throw new Error(error.message || "Failed to fetch user details");
     }
     const data = await res.json();
-    console.log(data[0]);
-    return data[0];
+    console.log(data);
+    return data;
   } catch (error) {
-    console.error("Fetch User Details Error:", error);
     throw new Error(error.message || "Failed to fetch user details");
   }
 }

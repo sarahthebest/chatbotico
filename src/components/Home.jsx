@@ -1,7 +1,16 @@
+import { useEffect } from "react";
 import Welcome from "./landing/Welcome";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-const Home = ({ setAuth }) => {
+const Home = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem('user') !== null) {
+      navigate('/dashboard');
+    }
+  }, [navigate]);
+
   return (
     <>
       <div className="home w-full h-screen flex flex-col overflow-hidden isolate relative">
@@ -30,9 +39,3 @@ const Home = ({ setAuth }) => {
 };
 
 export default Home;
-
-// <LandingHeader />
-// <div className="content relative flex flex-col lg:flex-row overflow-hidden">
-//   <SignIn setAuth={setAuth} />
-//   <Sidebar />
-// </div>
