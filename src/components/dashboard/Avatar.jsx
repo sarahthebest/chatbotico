@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchUserDetails } from "../../hooks/users";
 
 const Avatar = () => {
-    const [avatar, setAvatar] = useState("src/assets/img/default.png");
+    const [avatar, setAvatar] = useState("public/img/default.png");
 
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem('user'));

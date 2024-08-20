@@ -55,7 +55,7 @@ const Sidebar = () => {
         </div>
       </div>
       <img
-        src="src\assets\img\undraw_social_networking_re_i1ex.svg"
+        src="public\img\undraw_social_networking_re_i1ex.svg"
         className="absolute bottom-4 invisible lg:visible illustration place-self-center  "
         alt="Illustration taken from undraw.co"
       />

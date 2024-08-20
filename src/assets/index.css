@@ -4,11 +4,11 @@
 
 @font-face {
   font-family: 'bitmap';
-  src: url('./fonts/PixelOperator.ttf') format('truetype');
+  src: url('../../public/fonts/PixelOperator.ttf') format('truetype');
 }
 @font-face {
   font-family: 'oxygen';
-  src: url('./fonts/Oxygen-Regular.ttf') format('truetype');
+  src: url('../../public/fonts/Oxygen-Regular.ttf') format('truetype');
 }
 
 html, body {
@@ -76,7 +76,7 @@ html, body {
 
 .home::after {
   content: "";
-  background-image: url(src/assets/img/noise.webp); 
+  background-image: url(/public/img/noise.webp); 
   height: 300%;
   width: 300%;
   position: fixed;
