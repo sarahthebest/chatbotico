@@ -26,7 +26,7 @@ const Sidenav = () => {
             .catch((err) => {
                 console.error("Error fetching avatar:", err);
             });
-    }, []);
+    }, [token, userId]);
 
     return (
         <div

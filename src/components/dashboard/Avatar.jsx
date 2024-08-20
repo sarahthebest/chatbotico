@@ -12,7 +12,7 @@ const Avatar = ({ userId, token }) => {
             .catch((err) => {
                 console.error("Error fetching avatar:", err);
             });
-    }, []);
+    }, [token, userId]);
 
     return (
         <div className="avatarWrapper">
