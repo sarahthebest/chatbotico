@@ -35,7 +35,7 @@ const Message = ({ message, date, onDelete, id }) => {
                     className="messageContent flex flex-col justify-between cursor-default"
                     onClick={openModal}
                 >
-                    <div className="chat-bubble max-w-72 text-wrap break-all flex">
+                    <div className="chat-bubble max-w-72 text-wrap break-all flex hover:bg-slate-500">
                         {message}
                     </div>
                     <p className="text-xs">{dateFormatter(date)}</p>
