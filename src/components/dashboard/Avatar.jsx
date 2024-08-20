@@ -11,7 +11,6 @@ const Avatar = () => {
 
         fetchUserDetails(token, userId)
             .then((data) => {
-                console.log(data[0].avatar);
                 setAvatar(data[0].avatar);
             })
             .catch((err) => {

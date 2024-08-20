@@ -38,7 +38,6 @@ export async function fetchUserDetails(token, userId) {
       throw new Error(error.message || "Failed to fetch user details");
     }
     const data = await res.json();
-    console.log(data);
     return data;
   } catch (error) {
     throw new Error(error.message || "Failed to fetch user details");

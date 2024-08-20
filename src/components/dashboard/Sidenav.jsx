@@ -22,7 +22,6 @@ const Sidenav = () => {
 
         fetchUserDetails(token, userId)
             .then((data) => {
-                console.log(data[0].username);
                 setUsername(data[0].username);
             })
             .catch((err) => {

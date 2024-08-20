@@ -21,7 +21,7 @@ const ChatMessages = () => {
       {messages.length === 0 ? (
         <div className="noMessages flex flex-col w-fit my-auto">
         <img
-          src="public\img\undraw_void_-3-ggu.svg"
+          src="public/img/emptyChats.svg"
           className="w-1/2 mx-auto"
           alt="Undraw image."
         />
