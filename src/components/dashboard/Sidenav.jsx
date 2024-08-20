@@ -1,32 +1,20 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Avatar from "./Avatar";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useNavigate } from "react-router-dom";
-import { fetchUserDetails } from "../../hooks/users";
 
 const Sidenav = () => {
     const navigate = useNavigate();
     const [visible, setVisible] = useState(false);
-    const [username, setUsername] = useState("");
     const user = JSON.parse(localStorage.getItem("user"));
     const token = localStorage.getItem("auth-token");
-    const userId = user.id;
+    const username = user.user;
 
     const handleLogout = () => {
         localStorage.removeItem("auth-token");
         localStorage.removeItem("user");
         navigate("/");
     };
-
-    useEffect(() => {
-        fetchUserDetails(token, userId)
-            .then((data) => {
-                setUsername(data[0].username);
-            })
-            .catch((err) => {
-                console.error("Error fetching avatar:", err);
-            });
-    }, [token, userId]);
 
     return (
         <div
@@ -43,7 +31,7 @@ const Sidenav = () => {
                 }`}
             >
                 <div className="status flex flex-row content-center gap-2 w-full">
-                <Avatar userId={userId} token={token}/>
+                <Avatar/>
                 <p className="my-auto">{username}</p>
                 </div>
                 <div className="actions w-full">

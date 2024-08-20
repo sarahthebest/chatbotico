@@ -51,3 +51,27 @@ export async function writeMessage(text, conversationId) {
         throw new Error(err.message || "Failed to write message");
     }
 }
+
+export async function deleteMessage(msgId) {
+    let token = localStorage.getItem("auth-token");
+
+    try {
+        const res = await fetch(`https://chatify-api.up.railway.app/messages/${msgId}`, {
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+            },
+        });
+
+        if (!res.ok) {
+            const error = await res.json();
+            throw new Error(error.message || "Failed to delete message");
+        }
+
+        const data = await res.json();
+        return data;
+    } catch (err) {
+        throw new Error(err.message || "Failed to delete message");
+    }
+}

@@ -8,15 +8,18 @@ const DashHeader = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        try {
-            await writeMessage(text);
-
-            console.log("Message sent successfully!");
-            setText("");
-        } catch (err) {
-            console.error(err);
-            setError(err.message || "Failed to send message");
+        if (text.trim() === "") {
+            setError("Message can't be empty!");
+        } else {
+            try {
+                await writeMessage(text);
+                console.log("Message sent successfully!");
+                setText("");
+                setError("");
+            } catch (err) {
+                console.error(err);
+                setError(err.message || "Failed to send message");
+            }
         }
     };
 
@@ -35,12 +38,12 @@ const DashHeader = () => {
                 id="messageModal"
                 className="modal modal-bottom sm:modal-middle"
             >
-                <div className="modal-box">
+                <div className="modal-box flex flex-col gap-4">
                     <h3 className="font-bold ">Write your message</h3>
-                    <label className="textarea textarea-bordered flex items-center mt-4">
+                    <label className="textarea textarea-bordered flex items-center">
                         <textarea
-                            name="text"
-                            type="text"
+                            name="message"
+                            id="message"
                             className="grow bg-transparent"
                             placeholder="Beep boop..."
                             value={text}
