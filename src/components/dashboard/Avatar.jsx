@@ -1,14 +1,10 @@
 import { useEffect, useState } from "react";
 import { fetchUserDetails } from "../../hooks/users";
 
-const Avatar = () => {
+const Avatar = ({ userId, token }) => {
     const [avatar, setAvatar] = useState("public/img/default.png");
 
     useEffect(() => {
-        const user = JSON.parse(localStorage.getItem('user'));
-        const token = (localStorage.getItem('auth-token'));
-        const userId = user.id;
-
         fetchUserDetails(token, userId)
             .then((data) => {
                 setAvatar(data[0].avatar);

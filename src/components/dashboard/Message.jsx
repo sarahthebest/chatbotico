@@ -9,9 +9,13 @@ const Message = ({ message, date }) => {
     });
   };
 
+  const user = JSON.parse(localStorage.getItem('user'));
+  const token = (localStorage.getItem('auth-token'));
+  const userId = user.id;
+
   return (
     <div className="chatBubble my-4 gap-4 w-full flex flex-row">
-      <Avatar />
+      <Avatar userId={userId} token={token}/>
       <div className="messageContent">
         <div className="chat-bubble max-w-72 text-wrap break-all flex">{message}</div>
         <p className="text-xs">{dateFormatter(date)}</p>

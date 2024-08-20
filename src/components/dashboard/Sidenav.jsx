@@ -8,6 +8,9 @@ const Sidenav = () => {
     const navigate = useNavigate();
     const [visible, setVisible] = useState(false);
     const [username, setUsername] = useState("");
+    const user = JSON.parse(localStorage.getItem("user"));
+    const token = localStorage.getItem("auth-token");
+    const userId = user.id;
 
     const handleLogout = () => {
         localStorage.removeItem("auth-token");
@@ -16,10 +19,6 @@ const Sidenav = () => {
     };
 
     useEffect(() => {
-        const user = JSON.parse(localStorage.getItem("user"));
-        const token = localStorage.getItem("auth-token");
-        const userId = user.id;
-
         fetchUserDetails(token, userId)
             .then((data) => {
                 setUsername(data[0].username);
@@ -44,8 +43,8 @@ const Sidenav = () => {
                 }`}
             >
                 <div className="status flex flex-row content-center gap-2 w-full">
-                    <Avatar />
-                    <p className="my-auto">{username}</p>
+                <Avatar userId={userId} token={token}/>
+                <p className="my-auto">{username}</p>
                 </div>
                 <div className="actions w-full">
                     <ul>
