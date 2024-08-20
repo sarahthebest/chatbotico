@@ -76,7 +76,7 @@ html, body {
 
 .home::after {
   content: "";
-  background-image: url(/public/img/noise.webp); 
+  background-image: url(/noise.webp); 
   height: 300%;
   width: 300%;
   position: fixed;
