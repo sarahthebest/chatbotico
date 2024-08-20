@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchUserDetails } from "../../hooks/users";
 
 const Avatar = ({ userId, token }) => {
-    const [avatar, setAvatar] = useState("public/img/default.png");
+    const [avatar, setAvatar] = useState("/default.png");
 
     useEffect(() => {
         fetchUserDetails(token, userId)
