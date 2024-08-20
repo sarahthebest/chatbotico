@@ -4,11 +4,11 @@
 
 @font-face {
   font-family: 'bitmap';
-  src: url('fonts/PixelOperator.ttf') format('truetype');
+  src: url('/fonts/PixelOperator.ttf') format('truetype');
 }
 @font-face {
   font-family: 'oxygen';
-  src: url('fonts/Oxygen-Regular.ttf') format('truetype');
+  src: url('/fonts/Oxygen-Regular.ttf') format('truetype');
 }
 
 html, body {
