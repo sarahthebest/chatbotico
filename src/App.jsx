@@ -1,6 +1,7 @@
 import Register from "./components/register/Register";
 import SignIn from "./components/signin/SignIn"
 import Home from "./components/Home";
+import Profile from "./components/profile/Profile"
 import Dashboard from "./components/dashboard/Dashboard";
 import ProtectedRoutes from "./components/common/ProtectedRoutes";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -25,6 +26,10 @@ function App() {
         {
           path: "/dashboard",
           element: <Dashboard />,
+        },
+        {
+          path: "/profile",
+          element: <Profile />,
         },
       ],
     },

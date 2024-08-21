@@ -31,14 +31,14 @@ html, body {
 }
 
 .input{
-  background-color: #00000020;
+  background-color: #89898920;
 }
 
 .sidebar{
   background-color:hsla(311,0%,11%,1);
   background-image:
   radial-gradient(at 0% 2%, #3c32ff 0px, transparent 50%),
-  radial-gradient(at 90% 90%, #220c6b 0px, transparent 50%);
+  radial-gradient(at 90% 90%, rgba(247, 0, 255, 0.176) 0px, transparent 50%);
 }
 
 .avatar{

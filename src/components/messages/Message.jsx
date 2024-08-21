@@ -30,12 +30,12 @@ const Message = ({ message, date, onDelete, id }) => {
     return (
         <div className="chatBubble my-4 w-full flex flex-row justify-between">
             <div className="messageWrapper flex flex-row gap-4">
-                <Avatar/>
+                <Avatar />
                 <div
                     className="messageContent flex flex-col justify-between cursor-default"
                     onClick={openModal}
                 >
-                    <div className="chat-bubble max-w-72 text-wrap break-all flex hover:bg-slate-500">
+                    <div className="chat-bubble shadow-lg max-w-72 text-wrap break-all flex hover:bg-slate-500">
                         {message}
                     </div>
                     <p className="text-xs">{dateFormatter(date)}</p>
@@ -47,7 +47,7 @@ const Message = ({ message, date, onDelete, id }) => {
                     <div className="modal-box flex flex-col gap-4">
                         <h3 className="text-2xl">{username} says</h3>
                         <div className="messageWrapper flex flex-row gap-4">
-                            <Avatar/>
+                            <Avatar />
                             <div className="messageContent flex flex-col justify-between cursor-default">
                                 <div className="chat-bubble max-w-72 text-wrap break-all flex">
                                     {message}
@@ -56,10 +56,18 @@ const Message = ({ message, date, onDelete, id }) => {
                             </div>
                         </div>
                         <div className="modal-action">
-                            <button className="btn" type="button" onClick={closeModal}>
+                            <button
+                                className="btn w-fit join-item"
+                                type="button"
+                                onClick={closeModal}
+                            >
                                 Cancel
                             </button>
-                            <button className="btn btn-warning" type="button" onClick={deleteMessage}>
+                            <button
+                                className="btn btn-warning w-fit join-item"
+                                type="button"
+                                onClick={deleteMessage}
+                            >
                                 Delete message
                             </button>
                         </div>
