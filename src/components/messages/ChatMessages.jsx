@@ -7,23 +7,23 @@ const ChatMessages = () => {
     const [messages, setMessages] = useState([]);
 
     useEffect(() => {
-      fetchMessages()
-          .then((data) => {
-              setMessages(data);
-          })
-          .catch((err) => {
-              console.error("Error fetching messages:", err);
-          });
-  }, [messages]);
+        fetchMessages()
+            .then((data) => {
+                setMessages(data);
+            })
+            .catch((err) => {
+                console.error("Error fetching messages:", err);
+            });
+    }, [messages]);
 
-  const deleteMessage = async (msgId) => {
-    try {
-        await deleteMessageAPI(msgId); 
-        setMessages(messages.filter((message) => message.id !== msgId));
-    } catch (err) {
-        console.error("Error deleting message:", err);
-    }
-};
+    const deleteMessage = async (msgId) => {
+        try {
+            await deleteMessageAPI(msgId);
+            setMessages(messages.filter((message) => message.id !== msgId));
+        } catch (err) {
+            console.error("Error deleting message:", err);
+        }
+    };
 
     return (
         <div
@@ -43,7 +43,7 @@ const ChatMessages = () => {
                 messages.map((message) => (
                     <Message
                         key={message.id}
-                        id={message.id} 
+                        id={message.id}
                         message={message.text}
                         date={message.createdAt}
                         onDelete={deleteMessage}

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { fetchUserDetails } from "../../hooks/users";
 
-const Avatar = () => {
-    const [avatar, setAvatar] = useState("/default.png");
+const Avatar = ({fakeAvatar}) => {
+    const [displayAvatar, setDisplayAvatar] = useState("/default.png");
     const user = JSON.parse(localStorage.getItem("user"));
     const userId = user.id;
     const token = localStorage.getItem("auth-token");
@@ -10,7 +10,7 @@ const Avatar = () => {
     useEffect(() => {
         fetchUserDetails(token, userId)
             .then((data) => {
-                setAvatar(data[0].avatar);
+                setDisplayAvatar(data[0].avatar);
             })
             .catch((err) => {
                 console.error("Error fetching avatar:", err);
@@ -19,7 +19,7 @@ const Avatar = () => {
 
     return (
         <div className="avatarWrapper">
-            <img className="avatar w-20" src={avatar} alt="Avatar image" />
+            <img className="avatar w-20" src={displayAvatar} alt="Avatar image" />
         </div>
     );
 };

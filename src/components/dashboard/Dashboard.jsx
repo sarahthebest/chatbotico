@@ -1,4 +1,5 @@
 import ChatMessages from "../messages/ChatMessages";
+import FakeChat from "../messages/FakeChat";
 import DashHeader from "./DashHeader";
 import Sidenav from "./Sidenav";
 
@@ -13,7 +14,7 @@ const Dashboard = ({ handleLogout }) => {
                      divide-neutral h-screen w-full">
                         <ChatMessages />
                         <div className="allMessages">
-                            <p>FAKE MESSAGES!!!</p>
+                            <FakeChat />
                         </div>
                     </div>
                 </div>

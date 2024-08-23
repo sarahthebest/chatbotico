@@ -32,7 +32,6 @@ const Profile = ({ handleLogout }) => {
                 user: username,
                 email: email,
                 password: password,
-                avatar: avatar,
             };
             try {
                 const updatedUser = await updateUserDetails(
@@ -54,9 +53,9 @@ const Profile = ({ handleLogout }) => {
         <div className="profile">
             <div className="flex flex-col md:flex-row h-screen">
                 <Sidenav handleLogout={handleLogout} />
-                <div className="profileContent flex flex-col p-2 md:p-10 gap-6">
+                <div className="profileContent flex flex-col p-2 md:p-8 gap-4">
                     <div className="heading">
-                        <h1 className="text-4xl">Edit profile</h1>
+                        <h1 className="text-4xl mb-2 font-semibold">Edit profile</h1>
                         <button
                             className="flex flex-row gap-1"
                             onClick={() => navigate(-1)}
@@ -68,20 +67,42 @@ const Profile = ({ handleLogout }) => {
                     <div className="editable flex flex-col gap-6">
                         <AvatarEdit isEditing={isEditing} />
                         <div className="accountInfo w-full">
-                            <h1 className="text-2xl font-semibold mb-10">
+                            <h1 className="text-2xl font-semibold mb-4">
                                 Personal information
                             </h1>
                             <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 grid-rows-3 sm:grid-rows-2 md:grid-rows-1 gap-6 bg-slate-700 p-10 rounded shadow">
-                                <UsernameEdit isEditing={isEditing} />
-                                <PasswordEdit isEditing={isEditing} />
-                                <EmailEdit isEditing={isEditing} />
+                                <div className="grid-item flex flex-col gap-4 rounded w-full">
+                                    <h2 className="text-xl">Username</h2>
+                                    <input
+                                        type="text"
+                                        placeholder={username}
+                                        className={`input input-bordered w-full max-w-md ${!isEditing ? 'input-disabled' : ''}`}
+                                        disabled={!isEditing}
+                                    />
+                                </div>                                        <div className="grid-item flex flex-col gap-4 rounded">
+                                    <h2 className="text-xl">Password</h2>
+                                    <input
+                                        type="text"
+                                        placeholder={password}
+                                        className={`input input-bordered w-full max-w-md ${!isEditing ? 'input-disabled' : ''}`}
+                                        disabled={!isEditing}
+                                    />
+                                </div>
+                                <div className="grid-item flex flex-col gap-4 rounded">
+                                    <h2 className="text-xl">Email</h2>
+                                    <input
+                                        type="text"
+                                        placeholder={email}
+                                        className={`input input-bordered w-full max-w-md ${!isEditing ? 'input-disabled' : ''}`}
+                                        disabled={!isEditing}
+                                    />
+                                </div>
                             </div>
                         </div>
                         <button
                             onClick={userIsEditing}
-                            className={`w-fit btn ${
-                                isEditing ? "btn-success" : ""
-                            }`}
+                            className={`w-fit btn ${isEditing ? "btn-success" : ""
+                                }`}
                         >
                             {isEditing ? "Save Changes" : "Edit"}
                         </button>

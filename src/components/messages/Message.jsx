@@ -1,9 +1,11 @@
 import { useState } from "react";
 import Avatar from "../dashboard/Avatar";
 
-const Message = ({ message, date, onDelete, id }) => {
-    const user = JSON.parse(localStorage.getItem("user"));
-    const username = user.user;
+const Message = ({ message, avatar, username, date, onDelete, id }) => {
+    const user = JSON.parse(localStorage.getItem("user")) || {};
+    const displayUsername = username || user.user;
+    const displayMessage = message || "Default message";  
+    const displayAvatar = avatar || "https://i.pravatar.cc/100?img=14";  
     const [modalOpen, setModalOpen] = useState(false);
 
     const dateFormatter = (date) => {
@@ -30,13 +32,14 @@ const Message = ({ message, date, onDelete, id }) => {
     return (
         <div className="chatBubble my-4 w-full flex flex-row justify-between">
             <div className="messageWrapper flex flex-row gap-4">
-                <Avatar />
+                <Avatar fakeAvatar={displayAvatar} alt={`${displayUsername}'s avatar`} />
+
                 <div
                     className="messageContent flex flex-col justify-between cursor-default"
                     onClick={openModal}
                 >
                     <div className="chat-bubble shadow-lg max-w-72 text-wrap break-all flex hover:bg-slate-500">
-                        {message}
+                        {displayMessage}
                     </div>
                     <p className="text-xs">{dateFormatter(date)}</p>
                 </div>
@@ -45,12 +48,12 @@ const Message = ({ message, date, onDelete, id }) => {
             {modalOpen && (
                 <dialog open className="modal">
                     <div className="modal-box flex flex-col gap-4">
-                        <h3 className="text-2xl">{username} says</h3>
+                        <h3 className="text-2xl">{displayUsername} says:</h3>
                         <div className="messageWrapper flex flex-row gap-4">
-                            <Avatar />
+                            <Avatar avatar={displayAvatar} alt={`${displayUsername}'s avatar`} />
                             <div className="messageContent flex flex-col justify-between cursor-default">
                                 <div className="chat-bubble max-w-72 text-wrap break-all flex">
-                                    {message}
+                                    {displayMessage}
                                 </div>
                                 <p className="text-xs">{dateFormatter(date)}</p>
                             </div>

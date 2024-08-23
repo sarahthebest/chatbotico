@@ -42,7 +42,7 @@ const Sidenav = () => {
                         <li>
                             <button
                                 onClick={profileClick}
-                                className="btn w-full"
+                                className="btn w-full flex-no-wrap flex"
                             >
                                 <CiUser size={20} color="white" />
                                 Profile
