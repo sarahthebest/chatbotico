@@ -32,12 +32,12 @@ export async function fetchUserDetails(token, userId) {
                     "Content-Type": "application/json",
                 },
             }
-          );
-          if (!res.ok) {
+        );
+        if (!res.ok) {
             const error = await res.json();
             throw new Error(error.message || "Failed to fetch user details");
-          }
-          const data = await res.json();
+        }
+        const data = await res.json();
         return data;
     } catch (error) {
         throw new Error(error.message || "Failed to fetch user details");
@@ -62,10 +62,29 @@ export async function updateUserDetails(token, userId, updatedData) {
             const error = await res.json();
             throw new Error(error.message || "Failed to update user details");
         }
+    } catch (error) {
+        throw new Error(error.message || "Failed to update user details");
+    }
+}
+
+export async function deleteUser(token, userId) {
+    try {
+        const res = await fetch(`https://chatify-api.up.railway.app/users/${userId}`, {
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+            }
+        });
+
+        if (!res.ok) {
+            const error = await res.json();
+            throw new Error(error.message || "Failed to delete user");
+        }
 
         const data = await res.json();
         return data;
     } catch (error) {
-        throw new Error(error.message || "Failed to update user details");
+        throw new Error(error.message || "Failed to delete user");
     }
 }
