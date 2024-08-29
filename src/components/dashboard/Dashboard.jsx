@@ -1,5 +1,5 @@
 import ChatMessages from "../messages/ChatMessages";
-import FakeChat from "../messages/FakeChat";
+import Conversations from "../messages/Conversations";
 import DashHeader from "./DashHeader";
 import Sidenav from "./Sidenav";
 
@@ -10,11 +10,12 @@ const Dashboard = ({ handleLogout }) => {
                 <Sidenav handleLogout={handleLogout} />
                 <div className="content flex flex-col w-full">
                     <DashHeader />
-                    <div className="chats flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x
-                     divide-neutral h-screen w-full">
-                        <ChatMessages />
-                        <div className="allMessages">
-                            <FakeChat />
+                    <div className="chats flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x divide-neutral h-screen w-full">
+                        <div className="chatMessages flex-1">
+                            <ChatMessages />
+                        </div>
+                        <div className="allMessages flex-1">
+                            <Conversations />
                         </div>
                     </div>
                 </div>

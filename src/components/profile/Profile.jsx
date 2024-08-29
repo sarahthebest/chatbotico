@@ -110,7 +110,7 @@ const Profile = ({ handleLogout }) => {
         <div className="profile">
             <div className="flex flex-col md:flex-row h-screen">
                 <Sidenav handleLogout={handleLogout} />
-                <div className="profileContent flex flex-col p-2 md:p-8 gap-4">
+                <div className="profileContent flex flex-col p-2 md:p-8 gap-4 w-full">
                     <div className="heading">
                         <h1 className="text-4xl mb-2 font-semibold">Edit profile</h1>
                         <button

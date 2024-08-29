@@ -1,3 +1,10 @@
+const generateId = () => {
+    return crypto.randomUUID(); 
+};
+
+const conversationId = generateId();
+
+
 export async function fetchUsers(token) {
     try {
         const res = await fetch("https://chatify-api.up.railway.app/users", {
@@ -88,3 +95,23 @@ export async function deleteUser(token, userId) {
         throw new Error(error.message || "Failed to delete user");
     }
 }
+
+export async function inviteUser(token, userId) {
+    try{
+        const res = await fetch(`https://chatify-api.up.railway.app/invite/${userId}`, {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ conversationId }) 
+        });
+        if (!res.ok) {
+            const error = await res.json();
+            throw new Error(error.message || "Failed to invite user");
+        }
+    } catch (error) {
+        throw new Error(error.message || "Failed to invite user");
+    }
+}
+

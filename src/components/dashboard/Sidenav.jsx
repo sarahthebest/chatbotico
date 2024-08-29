@@ -42,7 +42,7 @@ const Sidenav = () => {
                         <li>
                             <button
                                 onClick={profileClick}
-                                className="btn w-full flex-no-wrap flex"
+                                className="btn w-full flex-nowrap flex"
                             >
                                 <CiUser size={20} color="white" />
                                 Profile
@@ -51,7 +51,7 @@ const Sidenav = () => {
                         <li className="flex">
                             <button
                                 onClick={handleLogout}
-                                className="btn w-full"
+                                className="btn w-full flex-nowrap flex"
                             >
                                 <CiLogout size={20} color="white" />
                                 Logout

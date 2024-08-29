@@ -75,3 +75,28 @@ export async function deleteMessage(msgId) {
         throw new Error(err.message || "Failed to delete message");
     }
 }
+
+export async function fetchConversations() {
+    let token = localStorage.getItem("auth-token");
+
+    try {
+        const res = await fetch("https://chatify-api.up.railway.app/conversations", {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+            },
+        });
+
+        if (!res.ok) {
+            const error = await res.json();
+            throw new Error(error.message || "Failed to fetch messages");
+        }
+
+        const data = await res.json();
+        return data;
+    } catch (err) {
+        console.error("Fetch Messages Error:", err);
+        throw new Error(err.message || "Failed to fetch messages");
+    }
+}

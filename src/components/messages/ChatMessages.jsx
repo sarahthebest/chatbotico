@@ -31,10 +31,10 @@ const ChatMessages = () => {
     md:w-1/2"
         >
             {messages.length === 0 ? (
-                <div className="noMessages flex flex-col w-fit my-auto">
+                <div className="noMessages flex flex-col w-fit my-auto justify-items-center">
                     <img
                         src="/emptyChats.svg"
-                        className="w-1/2 mx-auto"
+                        className="mx-auto"
                         alt="Undraw image."
                     />
                     <p className="mx-auto">Start chatting</p>
