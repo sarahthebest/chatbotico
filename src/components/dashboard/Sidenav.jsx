@@ -33,7 +33,7 @@ const Sidenav = () => {
                     visible ? "flex" : "hidden md:flex"
                 }`}
             >
-                <div className="status flex flex-row gap-2 w-full" >
+                <div className="status flex flex-col gap-2 w-full" >
                     <Avatar />
                     <p className="font-light text-lg">{username}</p>
                 </div>

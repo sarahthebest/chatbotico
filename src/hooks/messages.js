@@ -1,20 +1,24 @@
-export async function fetchMessages() {
-    let token = localStorage.getItem("auth-token");
+export async function fetchMessages(conversationId) {
+    const token = localStorage.getItem("auth-token");
+
+    const url = conversationId 
+        ? `https://chatify-api.up.railway.app/messages?conversationId=${conversationId}` 
+        : "https://chatify-api.up.railway.app/messages";
 
     try {
-        const res = await fetch("https://chatify-api.up.railway.app/messages", {
+        const res = await fetch(url, {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json",
             },
         });
+        console.log(res);
 
         if (!res.ok) {
             const error = await res.json();
             throw new Error(error.message || "Failed to fetch messages");
         }
-
         const data = await res.json();
         return data;
     } catch (err) {
@@ -23,11 +27,11 @@ export async function fetchMessages() {
     }
 }
 
-export async function writeMessage(text, conversationId) {
-    let token = localStorage.getItem("auth-token");
-    let user = localStorage.getItem("user");
 
-    try {
+export async function writeMessage(text, conversationId) {
+    const token = localStorage.getItem("auth-token");
+
+        try {
         const res = await fetch("https://chatify-api.up.railway.app/messages", {
             method: "POST",
             headers: {
@@ -53,16 +57,19 @@ export async function writeMessage(text, conversationId) {
 }
 
 export async function deleteMessage(msgId) {
-    let token = localStorage.getItem("auth-token");
+    const token = localStorage.getItem("auth-token");
 
     try {
-        const res = await fetch(`https://chatify-api.up.railway.app/messages/${msgId}`, {
-            method: "DELETE",
-            headers: {
-                Authorization: `Bearer ${token}`,
-                "Content-Type": "application/json",
-            },
-        });
+        const res = await fetch(
+            `https://chatify-api.up.railway.app/messages/${msgId}`,
+            {
+                method: "DELETE",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                },
+            }
+        );
 
         if (!res.ok) {
             const error = await res.json();
@@ -77,16 +84,19 @@ export async function deleteMessage(msgId) {
 }
 
 export async function fetchConversations() {
-    let token = localStorage.getItem("auth-token");
+    const token = localStorage.getItem("auth-token");
 
     try {
-        const res = await fetch("https://chatify-api.up.railway.app/conversations", {
-            method: "GET",
-            headers: {
-                Authorization: `Bearer ${token}`,
-                "Content-Type": "application/json",
-            },
-        });
+        const res = await fetch(
+            "https://chatify-api.up.railway.app/conversations",
+            {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                },
+            }
+        );
 
         if (!res.ok) {
             const error = await res.json();

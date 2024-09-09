@@ -16,7 +16,7 @@ const Avatar = () => {
 
     return (
         <div className="avatarWrapper">
-            <img className="avatar w-20" src={displayAvatar} alt="Avatar image" />
+            <img className="avatar w-full h-full rounded" src={displayAvatar} alt="Avatar image" />
         </div>
     );
 };

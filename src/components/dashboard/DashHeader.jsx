@@ -46,6 +46,9 @@ const DashHeader = () => {
                 setText("");
                 setError("");
                 setSuccess("Invite sent!");
+                setTimeout(() => {
+                    setSuccess("");
+                }, 2000);
             } else {
                 setError("User not found. Check the username.");
             }
@@ -65,7 +68,7 @@ const DashHeader = () => {
                         document.getElementById("messageModal").showModal()
                     }
                 >
-                    Write message
+                    Write
                 </button>
                 <button
                     className="btn w-fit me-4 bg-accent hover:bg-secondary hover:text-neutral-900"

@@ -1,11 +1,21 @@
 import { useState } from "react";
 import Avatar from "../dashboard/Avatar";
 
-const Message = ({ message, avatar, username, date, onDelete, id }) => {
+const Message = ({
+    inviteMsg,
+    inviteId,
+    inviteDate,
+    message,
+    avatar,
+    username,
+    date,
+    onDelete,
+    id,
+}) => {
     const user = JSON.parse(localStorage.getItem("user")) || {};
     const displayUsername = username || user.user;
-    const displayMessage = message || "Default message";  
-    const displayAvatar = avatar || "https://i.pravatar.cc/100?img=14";  
+    const displayMessage = message || inviteMsg;
+    const displayAvatar = avatar || "public/default.png";
     const [modalOpen, setModalOpen] = useState(false);
 
     const dateFormatter = (date) => {
@@ -32,7 +42,10 @@ const Message = ({ message, avatar, username, date, onDelete, id }) => {
     return (
         <div className="chatBubble my-4 w-full flex flex-row justify-between">
             <div className="messageWrapper flex flex-row gap-4">
-                <Avatar fakeAvatar={displayAvatar} alt={`${displayUsername}'s avatar`} />
+                <Avatar
+                    fakeAvatar={displayAvatar}
+                    alt={`${displayUsername}'s avatar`}
+                />
 
                 <div
                     className="messageContent flex flex-col justify-between cursor-default"
@@ -41,7 +54,7 @@ const Message = ({ message, avatar, username, date, onDelete, id }) => {
                     <div className="chat-bubble shadow-lg max-w-72 text-wrap break-all flex hover:bg-slate-500">
                         {displayMessage}
                     </div>
-                    <p className="text-xs">{dateFormatter(date)}</p>
+                    <p className="text-xs">{dateFormatter(inviteDate || date)}</p>
                 </div>
             </div>
 
@@ -50,12 +63,15 @@ const Message = ({ message, avatar, username, date, onDelete, id }) => {
                     <div className="modal-box flex flex-col gap-4">
                         <h3 className="text-2xl">{displayUsername} says:</h3>
                         <div className="messageWrapper flex flex-row gap-4">
-                            <Avatar avatar={displayAvatar} alt={`${displayUsername}'s avatar`} />
+                            <Avatar
+                                avatar={displayAvatar}
+                                alt={`${displayUsername}'s avatar`}
+                            />
                             <div className="messageContent flex flex-col justify-between cursor-default">
                                 <div className="chat-bubble max-w-72 text-wrap break-all flex">
                                     {displayMessage}
                                 </div>
-                                <p className="text-xs">{dateFormatter(date)}</p>
+                                <p className="text-xs">{dateFormatter(inviteDate || date)}</p>
                             </div>
                         </div>
                         <div className="modal-action">

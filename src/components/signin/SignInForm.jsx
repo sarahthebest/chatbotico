@@ -69,7 +69,6 @@ const SignIn = () => {
             setSuccess("Signing in!");
             setTimeout(() => navigate("/dashboard"), 2000);
         } catch (err) {
-            console.error(err);
             setError(err.message || "Invalid credentials");
         }
     };
@@ -115,7 +114,7 @@ const SignIn = () => {
             </div>
             {error && (
                 <div className="text-black bg-red-500 p-2 rounded-md">
-                    {error}
+                    <p>{error}</p>
                 </div>
             )}
             {success && (
